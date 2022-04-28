@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-function TodoItem({ id, title, completed }) {
-  const toggleHandler = () => {
-    console.log('toggle', id);
-  };
-
+function TodoItem({
+  id, title, completed, toggle,
+}) {
   const deleteHandler = () => {
     console.log('delete', id);
   };
@@ -13,7 +11,7 @@ function TodoItem({ id, title, completed }) {
       <input
         type="checkbox"
         checked={completed}
-        onChange={toggleHandler}
+        onChange={toggle}
       />
       <span>{title}</span>
       <button onClick={deleteHandler} type="button">&times;</button>

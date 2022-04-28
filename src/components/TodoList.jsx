@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import TodoItem from './TodoItem';
 
-function TodoList({ todos }) {
+function TodoList({ todos, toggleHandler }) {
   return (
     <ul>
       {todos.map((todo) => (
@@ -10,6 +10,7 @@ function TodoList({ todos }) {
           id={todo.id}
           title={todo.do}
           completed={todo.completed}
+          toggle={() => toggleHandler(todo.id)}
         />
       ))}
     </ul>
