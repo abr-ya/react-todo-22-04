@@ -7,27 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 ul {
   list-style: none;
 }
 
-li {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  gap: 0.5rem;
-}
-
-input:checked + span {
+input:checked + label {
   text-decoration: line-through;
+  color: gainsboro;
 }
 
-span:last-child {
-  color: red;
+button, label, input[type=checkbox] {
   cursor: pointer;
+  margin: 0 0.2rem;
 }
