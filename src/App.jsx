@@ -1,36 +1,23 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TodoList from './components/TodoList';
 import AddToDoForm from './components/AddToDoForm';
-import { replaceEl } from './utils';
-
-const initialTodoes = [
-  { id: '1', title: 'Позавтракать', completed: false },
-  { id: '2', title: 'Помыть посуду', completed: false },
-  { id: '3', title: 'Сходить на работу', completed: false },
-];
+import { addTodo } from './store/todoSlice';
 
 function App() {
-  const [todos, setTodos] = useState(initialTodoes);
+  const todos = useSelector((state) => state.todos.todos);
+  const dispatch = useDispatch();
 
   const addHandler = (text) => {
-    setTodos([
-      ...todos,
-      {
-        id: new Date().toISOString(),
-        title: text,
-        completed: false,
-      },
-    ]);
+    // console.log('add', text);
+    dispatch(addTodo(text));
   };
 
   const toggleHandler = (id) => {
-    const newEl = todos.find((el) => el.id === id);
-    newEl.completed = !newEl.completed;
-    setTodos(replaceEl(todos, 'id', id, newEl));
+    console.log('toggle', id);
   };
 
   const deleteHandler = (id) => {
-    setTodos(todos.filter((el) => el.id !== id));
+    console.log('delete', id);
   };
 
   return (
