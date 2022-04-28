@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
+
 function TodoItem({
   id, title, completed, toggle, del,
 }) {
@@ -15,5 +16,13 @@ function TodoItem({
     </li>
   );
 }
+
+TodoItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+  del: PropTypes.func.isRequired,
+};
 
 export default TodoItem;

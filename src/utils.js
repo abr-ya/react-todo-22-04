@@ -13,7 +13,7 @@
 // eslint-disable-next-line import/prefer-default-export
 export const replaceEl = (arr, key, value, newEl) => {
   const index = arr.findIndex((el) => el[key] === value);
-  console.log('replace index', index);
+  // console.log('replace index', index);
 
   return (index !== -1)
     ? arr.slice(0, index).concat(newEl).concat(arr.slice(index + 1))
