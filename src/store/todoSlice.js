@@ -8,26 +8,29 @@ const initialTodoes = [
 
 const todoSlice = createSlice({
   name: 'todos',
-  initialState: {
-    todos: initialTodoes,
-  },
+  initialState: initialTodoes,
   reducers: {
     addTodo(state, action) {
-      state.todos.push({
+      state.push({
         id: new Date().toISOString(),
         title: action.payload,
         completed: false,
       });
     },
-    toggleComplete(state, action) {
-      console.log(state, action);
+    toggleTodo(state, action) {
+      // console.log(state, action);
+      state.forEach((el) => {
+        // eslint-disable-next-line no-param-reassign
+        if (el.id === action.payload) el.completed = !el.completed;
+      });
     },
-    removeTodo(state, action) {
-      console.log(state, action);
+    deleteTodo(state, action) {
+      // console.log(state, action);
+      return state.filter((el) => el.id !== action.payload); // можно было написать state = ...
     },
   },
 });
 
-export const { addTodo, toggleComplete, removeTodo } = todoSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;

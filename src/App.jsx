@@ -1,24 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 import TodoList from './components/TodoList';
 import AddToDoForm from './components/AddToDoForm';
-import { addTodo } from './store/todoSlice';
+import { addTodo, toggleTodo, deleteTodo } from './store/todoSlice';
 
 function App() {
-  const todos = useSelector((state) => state.todos.todos);
+  const todos = useSelector((state) => state.todos); // data for List
+
+  // work with Store
   const dispatch = useDispatch();
-
-  const addHandler = (text) => {
-    // console.log('add', text);
-    dispatch(addTodo(text));
-  };
-
-  const toggleHandler = (id) => {
-    console.log('toggle', id);
-  };
-
-  const deleteHandler = (id) => {
-    console.log('delete', id);
-  };
+  const addHandler = (text) => { dispatch(addTodo(text)); };
+  const toggleHandler = (id) => { dispatch(toggleTodo(id)); };
+  const deleteHandler = (id) => { dispatch(deleteTodo(id)); };
 
   return (
     <div className="App">
